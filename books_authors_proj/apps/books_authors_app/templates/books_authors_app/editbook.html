@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Edit Book </title>
+</head>
+
+<body>
+  <form action="/edit_book" method="POST">
+    {%csrf_token%}
+    <input type="hidden" name="book2updateId" value="{{book2edit.id}}">
+    <div class="form-group">
+      <label>Title</label>
+      <input value='{{book2edit.title}}' name="bookTitle" type="text" class="form-control"
+        placeholder="Enter Book Title">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <input value='{{book2edit.desc}}' name="bookDescription" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+  <br>
+  <a href="/">Home</a>
+</body>
+
+</html>

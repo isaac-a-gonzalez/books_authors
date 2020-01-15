@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>{{book.title}}</h1>
+  <h2>{{book.id}}</h2>
+  <h3>{{book.desc}}</h3>
+  <ul>
+    {%for author in book.authors.all%}
+    <li>
+      {{author.first_name}} {{author.last_name}}
+    </li>
+    {%endfor%}
+  </ul>
+  <form action="/add_author_to_book" method="POST">
+    {%csrf_token%}
+    <input type="hidden" name="book_id" value="{{book.id}}">
+    <select name="selected_author_id">
+      {%for author in all_authors%}
+      <option value="{{author.id}}">{{author.first_name}} {{author.last_name}}</option>
+      {%endfor%}
+    </select>
+    <button>Send it Away!</button>
+  </form>
+  <br>
+  <a href="/">Home</a>
+</body>
+
+</html>
